@@ -91,9 +91,9 @@ const BusinessPlanDashboard = () => {
                     </div>
                     <div className="space-y-2">
                         {[
-                            { milestone: "MVP Launch", status: "Q1 2024", progress: 85 },
-                            { milestone: "Series A Funding", status: "Q2 2024", progress: 45 },
-                            { milestone: "10K Users", status: "Q3 2024", progress: 25 },
+                            { milestone: "MVP Launch", status: "Q1 2025", progress: 85 },
+                            { milestone: "Series A Funding", status: "Q2 2025", progress: 45 },
+                            { milestone: "10K Users", status: "Q3 2025", progress: 25 },
                         ].map((item, index) => (
                             <div key={index} className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
@@ -107,7 +107,7 @@ const BusinessPlanDashboard = () => {
                                             style={{ width: `${item.progress}%` }}
                                         />
                                     </div>
-                                    <span className="text-[#868f97] text-xs w-12">{item.status}</span>
+                                    <span className="text-[#868f97] text-xs w-14 whitespace-nowrap">{item.status}</span>
                                 </div>
                             </div>
                         ))}
@@ -118,7 +118,7 @@ const BusinessPlanDashboard = () => {
                 <motion.div variants={itemVariants} transition={itemTransition} className="mb-4">
                     <h4 className="text-white text-sm font-medium mb-3">Market Analysis</h4>
                     <div className="bg-[#141414] rounded-xl p-4 border border-white/5">
-                        <div className="text-[#868f97] text-xs mb-3">
+                        <div className="text-[#868f97] text-xs mb-3 text-center">
                             The fitness app market is experiencing unprecedented growth, driven by increased health consciousness and remote work trends.
                         </div>
                         <div className="grid grid-cols-3 gap-4 text-center">

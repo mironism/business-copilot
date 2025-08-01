@@ -90,7 +90,7 @@ const BackgroundDashboard = () => {
                 <div className="mb-6">
                     <h4 className="text-white text-sm font-medium mb-3">Growth Strategy</h4>
                     <div className="bg-[#141414] rounded-xl p-4 border border-white/5">
-                        <div className="text-[#868f97] text-xs mb-3">
+                        <div className="text-[#868f97] text-xs mb-3 text-center">
                             Focus on product-led growth with freemium model targeting remote teams experiencing collaboration challenges.
                         </div>
                         <div className="grid grid-cols-3 gap-4 text-center">
