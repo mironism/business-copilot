@@ -36,16 +36,23 @@ function useAutoResizeTextarea({
                 return;
             }
 
+            // Always reset to minHeight first to get accurate scrollHeight
             textarea.style.height = `${minHeight}px`;
-            const newHeight = Math.max(
-                minHeight,
-                Math.min(
-                    textarea.scrollHeight,
-                    maxHeight ?? Number.POSITIVE_INFINITY
-                )
-            );
+            
+            // Use requestAnimationFrame to ensure DOM has updated
+            requestAnimationFrame(() => {
+                if (!textarea) return;
+                
+                const newHeight = Math.max(
+                    minHeight,
+                    Math.min(
+                        textarea.scrollHeight,
+                        maxHeight ?? Number.POSITIVE_INFINITY
+                    )
+                );
 
-            textarea.style.height = `${newHeight}px`;
+                textarea.style.height = `${newHeight}px`;
+            });
         },
         [minHeight, maxHeight]
     );
@@ -389,8 +396,15 @@ export function AnimatedAIChat() {
                             ref={textareaRef}
                             value={value}
                             onChange={(e) => {
-                                setValue(e.target.value);
-                                adjustHeight();
+                                const newValue = e.target.value;
+                                setValue(newValue);
+                                
+                                // If text is completely deleted, reset height
+                                if (newValue.trim() === "") {
+                                    adjustHeight(true);
+                                } else {
+                                    adjustHeight();
+                                }
                             }}
                             onKeyDown={handleKeyDown}
                             onFocus={() => setInputFocused(true)}
@@ -398,7 +412,7 @@ export function AnimatedAIChat() {
                             placeholder={`${constantPrefix}${typewriterText}${(isTypingAnimation && pauseCounter === 0) || (!isTypingAnimation && charIndex > 0) ? '|' : ''}`}
                             containerClassName="w-full"
                             className={cn(
-                                "w-full px-5 py-4",
+                                "w-full px-3 py-4",
                                 "resize-none",
                                 "bg-transparent",
                                 "border-none",
@@ -443,7 +457,7 @@ export function AnimatedAIChat() {
                                 onClick={handleMicrophoneClick}
                                 whileTap={{ scale: 0.94 }}
                                 className={cn(
-                                    "p-2 rounded-lg transition-all relative group",
+                                    "p-2 rounded-lg transition-all relative group hidden",
                                     isRecording 
                                         ? "text-red-400 bg-red-500/10" 
                                         : "text-white/40 hover:text-white/90"
