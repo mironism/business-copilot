@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, cubicBezier } from "framer-motion";
 import { TrendingUp, TrendingDown, DollarSign, Users, Target, Calendar, BarChart3, PieChart } from "lucide-react";
 
 const BusinessPlanDashboard = () => {
@@ -16,8 +16,10 @@ const BusinessPlanDashboard = () => {
 
     const itemVariants = {
         hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+        visible: { opacity: 1, y: 0 },
     };
+
+    const itemTransition = { duration: 0.5, ease: cubicBezier(0.4, 0, 0.2, 1) };
 
     return (
         <motion.div 
@@ -29,13 +31,13 @@ const BusinessPlanDashboard = () => {
         >
             <div className="p-6 h-full overflow-y-auto">
                 {/* Header */}
-                <motion.div variants={itemVariants} className="mb-6">
+                <motion.div variants={itemVariants} transition={itemTransition} className="mb-6">
                     <h3 className="text-white text-xl font-semibold mb-2">Business Plan Overview</h3>
                     <p className="text-[#868f97] text-sm">AI-Powered Fitness App for Busy Professionals</p>
                 </motion.div>
 
                 {/* Key Metrics */}
-                <motion.div variants={itemVariants} className="grid grid-cols-2 gap-4 mb-6">
+                <motion.div variants={itemVariants} transition={itemTransition} className="grid grid-cols-2 gap-4 mb-6">
                     <div className="bg-[#141414] rounded-xl p-4 border border-white/5">
                         <div className="flex items-center justify-between mb-2">
                             <span className="text-[#868f97] text-xs">Revenue Projection</span>
@@ -59,7 +61,7 @@ const BusinessPlanDashboard = () => {
                 </motion.div>
 
                 {/* Revenue Breakdown */}
-                <motion.div variants={itemVariants} className="mb-6">
+                <motion.div variants={itemVariants} transition={itemTransition} className="mb-6">
                     <h4 className="text-white text-sm font-medium mb-3">Revenue Streams</h4>
                     <div className="space-y-3">
                         {[
@@ -82,7 +84,7 @@ const BusinessPlanDashboard = () => {
                 </motion.div>
 
                 {/* Key Milestones */}
-                <motion.div variants={itemVariants} className="mb-6">
+                <motion.div variants={itemVariants} transition={itemTransition} className="mb-6">
                     <div className="flex items-center justify-between mb-3">
                         <h4 className="text-white text-sm font-medium">Key Milestones</h4>
                         <span className="text-[#868f97] text-xs">Next 12 months</span>
@@ -113,7 +115,7 @@ const BusinessPlanDashboard = () => {
                 </motion.div>
 
                 {/* Market Analysis */}
-                <motion.div variants={itemVariants} className="mb-4">
+                <motion.div variants={itemVariants} transition={itemTransition} className="mb-4">
                     <h4 className="text-white text-sm font-medium mb-3">Market Analysis</h4>
                     <div className="bg-[#141414] rounded-xl p-4 border border-white/5">
                         <div className="text-[#868f97] text-xs mb-3">
@@ -137,7 +139,7 @@ const BusinessPlanDashboard = () => {
                 </motion.div>
 
                 {/* Next Actions */}
-                <motion.div variants={itemVariants}>
+                <motion.div variants={itemVariants} transition={itemTransition}>
                     <h4 className="text-white text-sm font-medium mb-3">Immediate Actions</h4>
                     <div className="space-y-2">
                         {[

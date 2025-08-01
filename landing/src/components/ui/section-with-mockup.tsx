@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, cubicBezier } from "framer-motion";
 import BusinessPlanDashboard from "./business-plan-dashboard";
 import BackgroundDashboard from "./background-dashboard";
 
@@ -35,7 +35,7 @@ const SectionWithMockup: React.FC<SectionWithMockupProps> = ({
 
     const itemVariants = {
         hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: cubicBezier(0.4,0,0.2,1) } },
     };
 
     const layoutClasses = reverseLayout
@@ -99,7 +99,7 @@ const SectionWithMockup: React.FC<SectionWithMockupProps> = ({
                                 scale: frontDashboard === 'market' ? 1 : 0.85
                             }}
                             initial={{ y: reverseLayout ? 0 : 0 }}
-                            transition={{ duration: 0.6, ease: "easeOut" }}
+                            transition={{ duration: 0.6, ease: cubicBezier(0.4,0,0.2,1) }}
                             viewport={{ once: true, amount: 0.5 }}
                             onClick={() => setFrontDashboard(frontDashboard === 'market' ? 'business' : 'market')}
                         >
@@ -121,7 +121,7 @@ const SectionWithMockup: React.FC<SectionWithMockupProps> = ({
                                 scale: frontDashboard === 'business' ? 1 : 0.85
                             }}
                             initial={{ y: reverseLayout ? 0 : 0 }}
-                            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                            transition={{ duration: 0.6, ease: cubicBezier(0.4,0,0.2,1), delay: 0.1 }}
                             viewport={{ once: true, amount: 0.5 }}
                             onClick={() => setFrontDashboard(frontDashboard === 'business' ? 'market' : 'business')}
                         >

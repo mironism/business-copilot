@@ -12,7 +12,7 @@ import {
     Command,
     Mic,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, cubicBezier } from "framer-motion";
 import * as React from "react"
 
 interface UseAutoResizeTextareaProps {
@@ -292,9 +292,6 @@ export function AnimatedAIChat() {
                     const selectedCommand = commandSuggestions[activeSuggestion];
                     setValue(selectedCommand.prefix + ' ');
                     setShowCommandPalette(false);
-                    
-                    setRecentCommand(selectedCommand.label);
-                    setTimeout(() => setRecentCommand(null), 3500);
                 }
             } else if (e.key === 'Escape') {
                 e.preventDefault();
@@ -327,9 +324,6 @@ export function AnimatedAIChat() {
         const selectedCommand = commandSuggestions[index];
         setValue(selectedCommand.prefix + ' ');
         setShowCommandPalette(false);
-        
-        setRecentCommand(selectedCommand.label);
-        setTimeout(() => setRecentCommand(null), 2000);
     };
 
     const handleMicrophoneClick = () => {
@@ -343,13 +337,13 @@ export function AnimatedAIChat() {
                 className="relative z-10 space-y-12"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.6, ease: cubicBezier(0.4,0,0.2,1) }}
             >
                 <motion.div 
                     className="relative bg-white/[0.06] backdrop-blur-2xl rounded-2xl border border-white/[0.12] shadow-2xl w-full max-w-4xl mx-auto"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    transition={{ duration: 0.3, ease: cubicBezier(0.4,0,0.2,1) }}
                 >
                     <AnimatePresence>
                         {showCommandPalette && (
