@@ -269,11 +269,11 @@ function BusinessLandingPage() {
                         >
                             <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-tight">
                                 <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
-                                    Turn Your
+                                    Turn Your Idea
                                 </span>
                                 <br />
                                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white/90 to-purple-300">
-                                    Idea into Business Docs
+                                    into Business Docs
                                 </span>
                             </h1>
                         </motion.div>
