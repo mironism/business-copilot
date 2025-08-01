@@ -269,11 +269,11 @@ function BusinessLandingPage() {
                         >
                             <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-tight">
                                 <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
-                                    Transform Your
+                                    Turn Your
                                 </span>
                                 <br />
                                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white/90 to-purple-300">
-                                    Idea into a Business Plan
+                                    Idea into Business Docs
                                 </span>
                             </h1>
                         </motion.div>
@@ -285,7 +285,7 @@ function BusinessLandingPage() {
                             transition={{ duration: 0.8, delay: 0.4 }}
                         >
                             <p className="text-lg md:text-xl text-white/60 mb-12 leading-relaxed font-light max-w-3xl mx-auto">
-                            Instantly turn any idea into a complete business plan, product roadmap, and growth strategy. Powered by AI and built for execution.
+                            Instantly generate a complete business plan, PRD, market analysis, product roadmap, and growth strategy. Powered by AI and built for execution.
                             </p>
                         </motion.div>
 

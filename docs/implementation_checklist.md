@@ -11,16 +11,14 @@
 
 ---
 
-## Phase 0 – Repo, Domains & Environment 🔧
+## Phase 0 – Repo Setup 🔧
 
 | Task | Owner | Notes |
 |------|-------|-------|
-| [ ] 0.1 Create **GitHub monorepo** (`landing/`, `app/`) | | Split landing & dashboard sub-apps |
-| [ ] 0.2 Push existing landing-page code | | Ensure `.env.example` committed |
-| [ ] 0.3 Connect **Vercel** → _two_ projects from **same repo** (`landing` & `app`) | | Auto-deploy on `main` |
-| [ ] 0.4 Configure **Env vars** in Vercel (`NEXT_PUBLIC_SUPABASE_URL`, `OPENAI_API_KEY`, `PERPLEXITY_API_KEY`, etc.) | | Refer tech spec |
-| [ ] 0.5 Map **Custom Domains** – `business.com` → landing, `app.business.com` → app | | via Vercel domain settings |
-| [ ] 0.6 Enable Prettier + ESLint monorepo config | | Consistent code style |
+| [x] 0.1 Create **GitHub monorepo** (`landing/`, `app/`) | | Split landing & dashboard sub-apps |
+| [x] 0.2 Push existing landing-page code | | Ensure `.env.example` committed |
+| [x] 0.3 Connect **Vercel** → _two_ projects from **same repo** (`landing` & `app`) | | Auto-deploy on `main` |
+| [x] 0.4 Create `.env.example` structure for app | | Local API keys setup |
 
 ---
 
@@ -56,9 +54,10 @@
 | Task | Owner | Notes |
 |------|-------|-------|
 | [ ] 2.5.1 Draft **Agent prompt templates** (structurer, researcher, docs) | | store in `/agents/prompts` |
-| [ ] 2.5.2 Configure **OpenAI & Perplexity keys** in Env vars | | test curl |
+| [ ] 2.5.2 Configure **Env vars** in Vercel (`NEXT_PUBLIC_SUPABASE_URL`, `OPENAI_API_KEY`, `PERPLEXITY_API_KEY`, etc.) | | test curl, refer tech spec |
 | [ ] 2.5.3 Write **Prompt unit tests** (expected JSON schema) | | jest |
 | [ ] 2.5.4 Add fallback instructions for prompt versioning | | canary vs stable |
+| [ ] 2.5.5 Enable Prettier + ESLint monorepo config | | Consistent code style across projects |
 
 ---
 
@@ -95,11 +94,12 @@
 
 | Task | Owner | Notes |
 |------|-------|-------|
-| [ ] 5.1 Integrate **Google Analytics** into landing & app | | basic pageviews |
-| [ ] 5.2 Log agent cost/latency to `events` table | | |
-| [ ] 5.3 Playwright smoke tests (auth, project create, upgrade) | | CI on push |
-| [ ] 5.4 Lighthouse perf audit | | target 85+ |
-| [ ] 5.5 Add `robots.txt` & OG tags for marketing pages | | |
+| [ ] 5.1 Map **Custom Domains** – `business.com` → landing, `app.business.com` → app | | via Vercel domain settings |
+| [ ] 5.2 Integrate **Google Analytics** into landing & app | | basic pageviews |
+| [ ] 5.3 Log agent cost/latency to `events` table | | |
+| [ ] 5.4 Playwright smoke tests (auth, project create, upgrade) | | CI on push |
+| [ ] 5.5 Lighthouse perf audit | | target 85+ |
+| [ ] 5.6 Add `robots.txt` & OG tags for marketing pages | | |
 
 ---
 
