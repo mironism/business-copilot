@@ -127,17 +127,17 @@ function Navigation() {
                         </div>
                         {/* Desktop navigation */}
                         <div className="hidden md:flex items-center space-x-6">
-                            <a href="#" className="text-white/70 hover:text-white transition-colors text-sm font-light">
-                                Community
+                            <a href="#features" className="text-white/70 hover:text-white transition-colors text-sm font-light">
+                                Features
                             </a>
-                            <a href="#" className="text-white/70 hover:text-white transition-colors text-sm font-light">
+                            <a href="#pricing" className="text-white/70 hover:text-white transition-colors text-sm font-light">
                                 Pricing
                             </a>
-                            <a href="#" className="text-white/70 hover:text-white transition-colors text-sm font-light whitespace-nowrap">
+                            <a href="#advisor" className="text-white/70 hover:text-white transition-colors text-sm font-light whitespace-nowrap">
                                 AI Advisor
                             </a>
                             <a href="#" className="text-white/70 hover:text-white transition-colors text-sm font-light">
-                                Learn
+                                Community
                             </a>
                         </div>
                     </div>
@@ -274,11 +274,11 @@ function BusinessLandingPage() {
                         >
                             <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold mb-6 tracking-tight">
                                 <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
-                                    Turn Your Idea
+                                    Instantly Validate & Plan
                                 </span>
                                 <br />
                                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-white/90 to-purple-300">
-                                    into Business Docs
+                                    Your Business Idea
                                 </span>
                             </h1>
                         </motion.div>
@@ -290,7 +290,7 @@ function BusinessLandingPage() {
                             transition={{ duration: 0.8, delay: 0.4 }}
                         >
                             <p className="text-lg md:text-xl text-white/60 mb-12 leading-relaxed font-light max-w-3xl mx-auto">
-                            Instantly generate a complete business plan, PRD, market analysis, product roadmap, and growth strategy. Powered by AI and built for execution.
+                            Get everything you need: business plan, PRD, market research, and growth strategy. Done for you in minutes.
                             </p>
                         </motion.div>
 
@@ -312,63 +312,12 @@ function BusinessLandingPage() {
                         >
                             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                             <span className="text-sm text-green-400 font-medium tracking-wide">
-                                350+ Business Plans Created
+                                Helped 350+ Founders
                             </span>
                         </motion.div>
                     </div>
 
-                    {/* Hidden Sections - Features and CTA */}
-                    <div className="hidden">
-                        {/* Features Section */}
-                        <motion.div
-                            variants={fadeUpVariants}
-                            initial="hidden"
-                            animate="visible"
-                            transition={{ duration: 0.8, delay: 0.8 }}
-                            className="mb-16"
-                        >
-                            <div className="text-center mb-12">
-                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                                    What You&apos;ll Get
-                                </h2>
-                                <p className="text-white/60 text-lg max-w-2xl mx-auto">
-                                    Our AI analyzes your idea and generates comprehensive business documentation to help you succeed.
-                                </p>
-                            </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {features.map((feature, index) => (
-                                    <FeatureCard
-                                        key={feature.title}
-                                        {...feature}
-                                        delay={0.1 * index}
-                                    />
-                                ))}
-                            </div>
-                        </motion.div>
-
-                        {/* CTA Section */}
-                        <motion.div
-                            variants={fadeUpVariants}
-                            initial="hidden"
-                            animate="visible"
-                            transition={{ duration: 0.8, delay: 1.0 }}
-                            className="text-center"
-                        >
-                            <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-white/10 rounded-3xl p-8 md:p-12">
-                                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                                    Ready to Build Your Business?
-                                </h3>
-                                <p className="text-white/60 text-lg mb-8 max-w-2xl mx-auto">
-                                    Join thousands of entrepreneurs who have transformed their ideas into successful businesses with our AI-powered platform.
-                                </p>
-                                <button className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl">
-                                    <span>Get Started Free</span>
-                                    <ArrowRight className="w-5 h-5" />
-                                </button>
-                            </div>
-                        </motion.div>
-                    </div>
                 </div>
             </div>
 

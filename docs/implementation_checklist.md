@@ -53,10 +53,10 @@
 
 | Task | Owner | Notes |
 |------|-------|-------|
-| [ ] 2.5.1 Draft **Agent prompt templates** (structurer, researcher, docs) | | store in `/agents/prompts` |
-| [ ] 2.5.2 Configure **Env vars** in Vercel (`NEXT_PUBLIC_SUPABASE_URL`, `OPENAI_API_KEY`, `PERPLEXITY_API_KEY`, etc.) | | test curl, refer tech spec |
+| [ ] 2.5.1 Draft **Agent prompt templates** (structurer, researcher, docs) | | store in `/agents/prompts` – see [AI Agent PRD](./business_copilot_ai_agent_prd.md) |
+| [ ] 2.5.2 Configure **Env vars** in Vercel (`NEXT_PUBLIC_SUPABASE_URL`, `OPENAI_API_KEY`, `PERPLEXITY_API_KEY`, etc.) | | test with `curl` – see [Next.js API Spec](./tech_spec_nextjs_api.md) & [Supabase Spec](./tech_spec_supabase.md) |
 | [ ] 2.5.3 Write **Prompt unit tests** (expected JSON schema) | | jest |
-| [ ] 2.5.4 Add fallback instructions for prompt versioning | | canary vs stable |
+| [ ] 2.5.4 Add fallback instructions for prompt versioning | | canary vs stable – follow scheme in [AI Agent PRD](./business_copilot_ai_agent_prd.md) |
 | [ ] 2.5.5 Enable Prettier + ESLint monorepo config | | Consistent code style across projects |
 
 ---
@@ -65,11 +65,11 @@
 
 | Task | Owner | Notes |
 |------|-------|-------|
-| [ ] 3.1 Build `/api/projects` POST handler (creates project & version 1) | | |
+| [ ] 3.1 Build `/api/projects` POST handler (creates project & version 1) | | see [Next.js API Spec](./tech_spec_nextjs_api.md) |
 | [ ] 3.2 Persist idea from landing via `localStorage` + redirect | | |
-| [ ] 3.3 Edge Function `/agents/generate` (Idea → Docs) | | OpenAI + Perplexity |
+| [ ] 3.3 Edge Function `/agents/generate` (Idea → Docs) | | OpenAI + Perplexity – logic in [AI Agent PRD](./business_copilot_ai_agent_prd.md) |
 | [ ] 3.4 Poll project status in `useProject` hook | | processing → ready |
-| [ ] 3.5 Implement clarifying Q flow (`/api/projects/:id/clarifications`) | | 2–3 Qs |
+| [ ] 3.5 Implement clarifying Q flow (`/api/projects/:id/clarifications`) | | 2–3 Qs – see dialogue spec in [AI Agent PRD](./business_copilot_ai_agent_prd.md) |
 | [ ] 3.6 SSE chat route `/api/chat` streaming, credit decrement | | |
 | [ ] 3.7 Blur logic + 402 responses for locked docs/tasks | | |
 

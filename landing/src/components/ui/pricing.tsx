@@ -1,12 +1,7 @@
 'use client';
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from '@/components/ui/tooltip';
+
 import { cn } from '@/lib/utils';
 import { CheckCircleIcon, StarIcon } from 'lucide-react';
 import Link from 'next/link';
@@ -71,7 +66,7 @@ export function PricingSection({
 				frequency={frequency}
 				setFrequency={setFrequency}
 			/>
-			<div className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-4 md:grid-cols-3">
+			<div className="mx-auto grid w-full max-w-3xl grid-cols-1 gap-4 md:grid-cols-2 justify-items-center">
 				{plans.map((plan) => (
 					<PricingCard plan={plan} key={plan.name} frequency={frequency} />
 				))}
@@ -151,7 +146,8 @@ export function PricingCard({
 					plan.highlighted && 'bg-white/[0.05]',
 				)}
 			>
-				<div className="absolute top-2 right-2 z-10 flex items-center gap-2">
+				<div className="flex items-center justify-between">
+					<div className="text-lg font-medium text-white">{plan.name}</div>
 					{frequency === 'yearly' && plan.price.monthly > 0 && (
 						<p className="bg-white text-black flex items-center gap-1 rounded-md border border-white/20 px-2 py-0.5 text-xs font-medium">
 							{Math.round(
@@ -161,15 +157,13 @@ export function PricingCard({
 						</p>
 					)}
 				</div>
-
-				<div className="text-lg font-medium text-white">{plan.name}</div>
 				<p className="text-white/60 text-sm font-normal">{plan.info}</p>
 				<h3 className="mt-2 flex items-end gap-1">
 					<span className="text-3xl font-bold text-white">
-						{plan.price[frequency] === 0 ? 'Free' : `$${plan.price[frequency]}`}
+						${plan.price[frequency]}
 					</span>
 					<span className="text-white/60">
-						{plan.price[frequency] > 0 ? '/month' : ''}
+						/month
 					</span>
 				</h3>
 				<p className="text-xs leading-5 text-white/50 mb-2">
@@ -185,25 +179,7 @@ export function PricingCard({
 				{plan.features.map((feature, index) => (
 					<div key={index} className="flex items-center gap-2">
 						<CheckCircleIcon className="text-green-400 h-4 w-4" />
-						<TooltipProvider>
-							<Tooltip delayDuration={0}>
-								<TooltipTrigger asChild>
-									<p
-										className={cn(
-											feature.tooltip &&
-												'cursor-pointer border-b border-dashed border-white/30',
-										)}
-									>
-										{feature.text}
-									</p>
-								</TooltipTrigger>
-								{feature.tooltip && (
-									<TooltipContent>
-										<p>{feature.tooltip}</p>
-									</TooltipContent>
-								)}
-							</Tooltip>
-						</TooltipProvider>
+						<p>{feature.text}</p>
 					</div>
 				))}
 			</div>

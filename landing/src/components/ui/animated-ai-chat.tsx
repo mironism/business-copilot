@@ -148,6 +148,7 @@ export function AnimatedAIChat() {
     const [charIndex, setCharIndex] = useState(0);
     const [pauseCounter, setPauseCounter] = useState(0);
     const [isRecording, setIsRecording] = useState(false);
+    const [isExistingBusiness, setIsExistingBusiness] = useState(false);
     const { textareaRef, adjustHeight } = useAutoResizeTextarea({
         minHeight: 80,
         maxHeight: 220,
@@ -155,44 +156,85 @@ export function AnimatedAIChat() {
     const [inputFocused, setInputFocused] = useState(false);
     const commandPaletteRef = useRef<HTMLDivElement>(null);
 
-    const commandSuggestions: CommandSuggestion[] = [
+    const newIdeaCommands: CommandSuggestion[] = [
         { 
             icon: <ImageIcon className="w-4 h-4" />, 
-            label: "Business Plan", 
-            description: "Complete business plan with financials", 
-            prefix: "/business-plan" 
+            label: "Validate my startup idea", 
+            description: "Complete validation with market fit", 
+            prefix: "/validate" 
         },
         { 
             icon: <ImageIcon className="w-4 h-4" />, 
-            label: "Market Analysis", 
-            description: "Competitor research & market sizing", 
-            prefix: "/market-analysis" 
+            label: "Analyze market potential", 
+            description: "Deep dive into market opportunities", 
+            prefix: "/analyze-market" 
         },
         { 
             icon: <MonitorIcon className="w-4 h-4" />, 
-            label: "Product Requirements", 
-            description: "Detailed PRD with specifications", 
-            prefix: "/prd" 
+            label: "Draft a go-to-market strategy", 
+            description: "Launch plan and customer acquisition", 
+            prefix: "/gtm-strategy" 
         },
         { 
             icon: <Sparkles className="w-4 h-4" />, 
-            label: "Marketing Plan", 
-            description: "Go-to-market strategy & campaigns", 
-            prefix: "/marketing" 
+            label: "Refine my product concept", 
+            description: "Product specs and feature roadmap", 
+            prefix: "/refine-product" 
         },
     ];
 
-    const constantPrefix = "I want to create ";
-    const businessIdeas = [
-        "an AI-powered fitness app for busy professionals",
-        "a sustainable food delivery service for college campuses", 
-        "a B2B SaaS tool for remote team collaboration",
-        "a subscription-based meal prep service for millennials",
-        "a mobile app connecting local artisans with customers",
-        "an online marketplace for vintage furniture and decor",
-        "a fintech app for freelancer expense management",
-        "a mental health platform for remote workers"
+    const existingBusinessCommands: CommandSuggestion[] = [
+        { 
+            icon: <ImageIcon className="w-4 h-4" />, 
+            label: "Optimize my business model", 
+            description: "Improve efficiency and profitability", 
+            prefix: "/optimize" 
+        },
+        { 
+            icon: <ImageIcon className="w-4 h-4" />, 
+            label: "Expand to new markets", 
+            description: "Growth opportunities and expansion", 
+            prefix: "/expand-markets" 
+        },
+        { 
+            icon: <MonitorIcon className="w-4 h-4" />, 
+            label: "Improve customer retention", 
+            description: "Strategies to keep customers longer", 
+            prefix: "/retention" 
+        },
+        { 
+            icon: <Sparkles className="w-4 h-4" />, 
+            label: "Scale my operations", 
+            description: "Systems and processes for growth", 
+            prefix: "/scale-ops" 
+        },
     ];
+
+    const commandSuggestions = isExistingBusiness ? existingBusinessCommands : newIdeaCommands;
+
+    const newIdeaPlaceholders = [
+        "I want to create an AI-powered fitness app for busy professionals",
+        "I want to create a sustainable food delivery service for college campuses", 
+        "I want to create a B2B SaaS tool for remote team collaboration",
+        "I want to create a subscription-based meal prep service for millennials",
+        "I want to create a mobile app connecting local artisans with customers",
+        "I want to create an online marketplace for vintage furniture and decor",
+        "I want to create a fintech app for freelancer expense management",
+        "I want to create a mental health platform for remote workers"
+    ];
+
+    const existingBusinessPlaceholders = [
+        "I run a small coffee shop and want to increase customer retention",
+        "My SaaS startup has 100 users but growth has stalled",
+        "I have a consulting business and want to scale beyond my time",
+        "My e-commerce store needs better conversion rates",
+        "I own a local gym and want to expand to a second location",
+        "My agency is profitable but I want to improve operations",
+        "My restaurant has loyal customers but low profit margins",
+        "My online course business needs more effective marketing"
+    ];
+
+    const placeholderTexts = isExistingBusiness ? existingBusinessPlaceholders : newIdeaPlaceholders;
 
     useEffect(() => {
         if (value.startsWith('/') && !value.includes(' ')) {
@@ -229,7 +271,7 @@ export function AnimatedAIChat() {
             return; // Don't animate when user is focused or typing
         }
 
-        const currentIdea = businessIdeas[currentPlaceholderIndex];
+        const currentIdea = placeholderTexts[currentPlaceholderIndex];
         
         const typewriterInterval = setInterval(() => {
             if (isTypingAnimation) {
@@ -254,14 +296,23 @@ export function AnimatedAIChat() {
                     setCharIndex(prev => prev - 1);
                 } else {
                     // Move to next idea and start typing
-                    setCurrentPlaceholderIndex(prev => (prev + 1) % businessIdeas.length);
+                    setCurrentPlaceholderIndex(prev => (prev + 1) % placeholderTexts.length);
                     setIsTypingAnimation(true);
                 }
             }
         }, isTypingAnimation ? 50 : 30); // Slower typing, faster deleting
 
         return () => clearInterval(typewriterInterval);
-    }, [inputFocused, value, currentPlaceholderIndex, charIndex, isTypingAnimation, businessIdeas, pauseCounter]);
+    }, [inputFocused, value, currentPlaceholderIndex, charIndex, isTypingAnimation, placeholderTexts, pauseCounter]);
+
+    // Reset typewriter when switching between modes
+    useEffect(() => {
+        setCurrentPlaceholderIndex(0);
+        setCharIndex(0);
+        setTypewriterText("");
+        setIsTypingAnimation(true);
+        setPauseCounter(0);
+    }, [isExistingBusiness]);
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
@@ -409,7 +460,7 @@ export function AnimatedAIChat() {
                             onKeyDown={handleKeyDown}
                             onFocus={() => setInputFocused(true)}
                             onBlur={() => setInputFocused(false)}
-                            placeholder={`${constantPrefix}${typewriterText}${(isTypingAnimation && pauseCounter === 0) || (!isTypingAnimation && charIndex > 0) ? '|' : ''}`}
+                            placeholder={`${typewriterText}${(isTypingAnimation && pauseCounter === 0) || (!isTypingAnimation && charIndex > 0) ? '|' : ''}`}
                             containerClassName="w-full"
                             className={cn(
                                 "w-full px-3 py-4",
@@ -432,6 +483,38 @@ export function AnimatedAIChat() {
 
                     <div className="px-6 py-4 border-t border-white/[0.12] flex items-center justify-between gap-4">
                         <div className="flex items-center gap-3">
+                            {/* Business Mode Toggle - First */}
+                            <div className="flex items-center gap-1 px-1.5 py-1 rounded-lg bg-white/[0.02] border border-white/[0.08]">
+                                <motion.button
+                                    type="button"
+                                    onClick={() => setIsExistingBusiness(false)}
+                                    whileTap={{ scale: 0.95 }}
+                                    className={cn(
+                                        "px-2 py-1 rounded text-xs font-medium transition-all relative whitespace-nowrap",
+                                        !isExistingBusiness 
+                                            ? "text-white bg-white/[0.08]" 
+                                            : "text-white/50 hover:text-white/70"
+                                    )}
+                                >
+                                    <span className="hidden sm:inline">New Idea</span>
+                                    <span className="sm:hidden">New</span>
+                                </motion.button>
+                                <motion.button
+                                    type="button"
+                                    onClick={() => setIsExistingBusiness(true)}
+                                    whileTap={{ scale: 0.95 }}
+                                    className={cn(
+                                        "px-2 py-1 rounded text-xs font-medium transition-all relative whitespace-nowrap",
+                                        isExistingBusiness 
+                                            ? "text-white bg-white/[0.08]" 
+                                            : "text-white/50 hover:text-white/70"
+                                    )}
+                                >
+                                    <span className="hidden sm:inline">Live Business</span>
+                                    <span className="sm:hidden">Live</span>
+                                </motion.button>
+                            </div>
+
                             <motion.button
                                 type="button"
                                 data-command-button

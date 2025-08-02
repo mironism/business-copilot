@@ -134,6 +134,12 @@ Key differentiator: **From raw idea to detailed documentation pack with AI-power
 - Ensure GDPR / CCPA compliance (user data export / deletion endpoints).
 - Persist intermediate agent steps for transparency & debugging.
 
+### Related Technical Docs
+- [AI Agent PRD](./business_copilot_ai_agent_prd.md)
+- [Supabase Tech Spec](./tech_spec_supabase.md)
+- [Next.js API Spec](./tech_spec_nextjs_api.md)
+- [Implementation Checklist](./implementation_checklist.md)
+
 ---
 
-End of PRD v1.5.
+End of PRD v1.6.
