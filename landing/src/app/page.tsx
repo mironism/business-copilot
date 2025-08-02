@@ -119,36 +119,38 @@ function Navigation() {
         <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-md border-b border-white/10">
             <div className="max-w-7xl mx-auto px-6 py-4">
                 <div className="flex items-center justify-between">
-                    {/* Left side - Logo and Navigation links */}
-                    <div className="flex items-center space-x-8">
-                        <div className="flex items-center gap-2">
+                    {/* Left side - Logo (mobile) and Navigation links (desktop) */}
+                    <div className="flex items-center">
+                        {/* Mobile logo */}
+                        <div className="md:hidden">
                             <Sparkles className="size-6 text-white" />
                         </div>
-                        <div className="flex items-center space-x-6">
+                        {/* Desktop navigation */}
+                        <div className="hidden md:flex items-center space-x-6">
                             <a href="#" className="text-white/70 hover:text-white transition-colors text-sm font-light">
                                 Community
                             </a>
                             <a href="#" className="text-white/70 hover:text-white transition-colors text-sm font-light">
                                 Pricing
                             </a>
-                            <a href="#" className="text-white/70 hover:text-white transition-colors text-sm font-light">
+                            <a href="#" className="text-white/70 hover:text-white transition-colors text-sm font-light whitespace-nowrap">
                                 AI Advisor
                             </a>
                             <a href="#" className="text-white/70 hover:text-white transition-colors text-sm font-light">
-          Learn
-        </a>
+                                Learn
+                            </a>
                         </div>
                     </div>
 
                     {/* Right side - Action buttons */}
-                    <div className="flex items-center space-x-3">
-                        <button className="text-white/70 hover:text-white transition-colors text-sm font-light px-4 py-2">
+                    <div className="flex items-center space-x-2 md:space-x-3">
+                        <button className="text-white/70 hover:text-white transition-colors text-xs md:text-sm font-light px-2 md:px-4 py-2">
                             Log in
                         </button>
                         <motion.button
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="bg-white text-black px-4 py-2 rounded-lg text-sm font-medium transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+                            className="bg-white text-black px-3 md:px-4 py-2 rounded-lg text-xs md:text-sm font-medium transition-all shadow-lg hover:shadow-xl flex items-center gap-2 whitespace-nowrap"
                         >
                             <span>Get Started</span>
                         </motion.button>

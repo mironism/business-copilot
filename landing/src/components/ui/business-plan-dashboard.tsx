@@ -37,11 +37,11 @@ const BusinessPlanDashboard = () => {
                 </motion.div>
 
                 {/* Key Metrics */}
-                <motion.div variants={itemVariants} transition={itemTransition} className="grid grid-cols-2 gap-4 mb-6">
+                <motion.div variants={itemVariants} transition={itemTransition} className="space-y-4 mb-6">
                     <div className="bg-[#141414] rounded-xl p-4 border border-white/5">
                         <div className="flex items-center justify-between mb-2">
                             <span className="text-[#868f97] text-xs">Revenue Projection</span>
-                            <TrendingUp className="w-4 h-4 text-green-400" />
+                            <TrendingUp className="w-4 h-4 text-green-400 flex-shrink-0" />
                         </div>
                         <div className="flex items-baseline gap-2">
                             <span className="text-white text-lg font-semibold">$2.4M</span>
@@ -51,7 +51,7 @@ const BusinessPlanDashboard = () => {
                     <div className="bg-[#141414] rounded-xl p-4 border border-white/5">
                         <div className="flex items-center justify-between mb-2">
                             <span className="text-[#868f97] text-xs">Market Size</span>
-                            <Target className="w-4 h-4 text-blue-400" />
+                            <Target className="w-4 h-4 text-blue-400 flex-shrink-0" />
                         </div>
                         <div className="flex items-baseline gap-2">
                             <span className="text-white text-lg font-semibold">$96B</span>
@@ -70,11 +70,11 @@ const BusinessPlanDashboard = () => {
                             { name: "In-App Purchases", value: "$420K", percent: "+43%", color: "text-green-400" },
                         ].map((item, index) => (
                             <div key={index} className="flex items-center justify-between">
-                                <div className="flex items-center gap-3">
-                                    <DollarSign className="w-3 h-3 text-[#868f97]" />
-                                    <span className="text-white text-xs">{item.name}</span>
+                                <div className="flex items-center gap-2 min-w-0 flex-1">
+                                    <DollarSign className="w-3 h-3 text-[#868f97] flex-shrink-0" />
+                                    <span className="text-white text-xs truncate">{item.name}</span>
                                 </div>
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-1 flex-shrink-0">
                                     <span className="text-white text-xs font-medium">{item.value}</span>
                                     <span className={`text-xs ${item.color}`}>{item.percent}</span>
                                 </div>
@@ -121,16 +121,16 @@ const BusinessPlanDashboard = () => {
                         <div className="text-[#868f97] text-xs mb-3 text-center">
                             The fitness app market is experiencing unprecedented growth, driven by increased health consciousness and remote work trends.
                         </div>
-                        <div className="grid grid-cols-3 gap-4 text-center">
-                            <div>
+                        <div className="grid grid-cols-3 gap-2 text-center">
+                            <div className="min-w-0">
                                 <div className="text-white text-sm font-semibold">47%</div>
                                 <div className="text-[#868f97] text-xs">Market Growth</div>
                             </div>
-                            <div>
+                            <div className="min-w-0">
                                 <div className="text-white text-sm font-semibold">2.3M</div>
                                 <div className="text-[#868f97] text-xs">Target Users</div>
                             </div>
-                            <div>
+                            <div className="min-w-0">
                                 <div className="text-white text-sm font-semibold">$127</div>
                                 <div className="text-[#868f97] text-xs">Avg. Revenue/User</div>
                             </div>

@@ -30,31 +30,31 @@ const AIChatMockup = () => {
             <p className="text-sm text-white/90 mb-4">I&apos;ve analyzed your growth data and identified 4 high-impact strategies to reach 25%+ MoM growth:</p>
             
             {/* Quick Strategy Cards */}
-            <div className="grid grid-cols-2 gap-2 mb-4">
-              <div className="bg-[#0f0f0f] rounded-lg p-3 border border-white/[0.05]">
-                <div className="flex items-center gap-2">
-                  <Target className="w-4 h-4 text-blue-400" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+              <div className="bg-[#0f0f0f] rounded-lg p-2 md:p-3 border border-white/[0.05]">
+                <div className="flex items-center gap-1 md:gap-2">
+                  <Target className="w-3 h-3 md:w-4 md:h-4 text-blue-400 flex-shrink-0" />
                   <span className="text-xs text-white font-medium">Product-Led Growth</span>
                 </div>
                 <p className="text-xs text-white/60 mt-1">+8% MoM potential</p>
               </div>
-              <div className="bg-[#0f0f0f] rounded-lg p-3 border border-white/[0.05]">
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-green-400" />
+              <div className="bg-[#0f0f0f] rounded-lg p-2 md:p-3 border border-white/[0.05]">
+                <div className="flex items-center gap-1 md:gap-2">
+                  <Users className="w-3 h-3 md:w-4 md:h-4 text-green-400 flex-shrink-0" />
                   <span className="text-xs text-white font-medium">Referral Program</span>
                 </div>
                 <p className="text-xs text-white/60 mt-1">+5% MoM potential</p>
               </div>
-              <div className="bg-[#0f0f0f] rounded-lg p-3 border border-white/[0.05]">
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4 text-purple-400" />
+              <div className="bg-[#0f0f0f] rounded-lg p-2 md:p-3 border border-white/[0.05]">
+                <div className="flex items-center gap-1 md:gap-2">
+                  <TrendingUp className="w-3 h-3 md:w-4 md:h-4 text-purple-400 flex-shrink-0" />
                   <span className="text-xs text-white font-medium">Expansion Revenue</span>
                 </div>
                 <p className="text-xs text-white/60 mt-1">+7% MoM potential</p>
               </div>
-              <div className="bg-[#0f0f0f] rounded-lg p-3 border border-white/[0.05]">
-                <div className="flex items-center gap-2">
-                  <BarChart className="w-4 h-4 text-orange-400" />
+              <div className="bg-[#0f0f0f] rounded-lg p-2 md:p-3 border border-white/[0.05]">
+                <div className="flex items-center gap-1 md:gap-2">
+                  <BarChart className="w-3 h-3 md:w-4 md:h-4 text-orange-400 flex-shrink-0" />
                   <span className="text-xs text-white font-medium">Conversion Opt.</span>
                 </div>
                 <p className="text-xs text-white/60 mt-1">+4% MoM potential</p>
@@ -83,11 +83,11 @@ const AIChatMockup = () => {
             {/* Document Preview */}
             <div className="bg-[#0f0f0f] rounded-xl p-4 border border-white/[0.05] mb-4">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-white/[0.08] rounded-lg flex items-center justify-center">
-                  <FileText className="w-5 h-5 text-white/70" />
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-white/[0.08] rounded-lg flex items-center justify-center flex-shrink-0">
+                  <FileText className="w-4 h-4 md:w-5 md:h-5 text-white/70" />
                 </div>
-                <div className="flex-1">
-                  <h4 className="text-white font-semibold">Growth Acceleration Plan</h4>
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-white font-semibold text-sm">Growth Acceleration Plan</h4>
                   <p className="text-white/70 text-xs">90-day roadmap to 25%+ MoM growth</p>
                 </div>
               </div>
@@ -110,9 +110,10 @@ const AIChatMockup = () => {
               
               <div className="flex items-center justify-between">
                 <span className="text-white/60 text-xs">24 pages • Just generated</span>
-                <button className="bg-white/[0.08] hover:bg-white/[0.12] text-white px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 flex items-center gap-1">
-                  <FileText className="w-3 h-3" />
-                  Download
+                <button className="bg-white/[0.08] hover:bg-white/[0.12] text-white px-2 md:px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 flex items-center gap-1">
+                  <FileText className="w-3 h-3 flex-shrink-0" />
+                  <span className="hidden sm:inline">Download</span>
+                  <span className="sm:hidden">DL</span>
                 </button>
               </div>
             </div>

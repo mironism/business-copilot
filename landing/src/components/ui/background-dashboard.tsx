@@ -14,7 +14,7 @@ const BackgroundDashboard = () => {
                 </div>
 
                 {/* Key Metrics */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="space-y-4 mb-6">
                     <div className="bg-[#141414] rounded-xl p-4 border border-white/5">
                         <div className="flex items-center justify-between mb-2">
                             <span className="text-[#868f97] text-xs">Market Size</span>
@@ -42,16 +42,16 @@ const BackgroundDashboard = () => {
                     <h4 className="text-white text-sm font-medium mb-3">Target Customers</h4>
                     <div className="space-y-3">
                         {[
-                            { segment: "Remote Teams 50-200", revenue: "$8.5K MRR", growth: "+67%" },
-                            { segment: "Startups & Scale-ups", revenue: "$4.2K MRR", growth: "+124%" },
-                            { segment: "Enterprise Accounts", revenue: "$15K MRR", growth: "+89%" },
+                            { segment: "Remote Teams", revenue: "$8.5K MRR", growth: "+67%" },
+                            { segment: "Startups", revenue: "$4.2K MRR", growth: "+124%" },
+                            { segment: "Enterprise", revenue: "$15K MRR", growth: "+89%" },
                         ].map((item, index) => (
                             <div key={index} className="flex items-center justify-between">
-                                <div className="flex items-center gap-3">
-                                    <Users className="w-3 h-3 text-[#868f97]" />
+                                <div className="flex items-center gap-2 min-w-0 flex-1">
+                                    <Users className="w-3 h-3 text-[#868f97] flex-shrink-0" />
                                     <span className="text-white text-xs">{item.segment}</span>
                                 </div>
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-1 flex-shrink-0">
                                     <span className="text-white text-xs font-medium">{item.revenue}</span>
                                     <span className="text-green-400 text-xs">{item.growth}</span>
                                 </div>
@@ -73,11 +73,11 @@ const BackgroundDashboard = () => {
                             { competitor: "Our Platform", share: "2%", status: "Emerging" },
                         ].map((item, index) => (
                             <div key={index} className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <ShoppingCart className="w-3 h-3 text-[#868f97]" />
-                                    <span className="text-white text-xs">{item.competitor}</span>
+                                <div className="flex items-center gap-2 min-w-0 flex-1">
+                                    <ShoppingCart className="w-3 h-3 text-[#868f97] flex-shrink-0" />
+                                    <span className="text-white text-xs truncate">{item.competitor}</span>
                                 </div>
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-1 flex-shrink-0">
                                     <span className="text-white text-xs">{item.share}</span>
                                     <span className="text-[#868f97] text-xs">{item.status}</span>
                                 </div>
@@ -93,16 +93,16 @@ const BackgroundDashboard = () => {
                         <div className="text-[#868f97] text-xs mb-3 text-center">
                             Focus on product-led growth with freemium model targeting remote teams experiencing collaboration challenges.
                         </div>
-                        <div className="grid grid-cols-3 gap-4 text-center">
-                            <div>
+                        <div className="grid grid-cols-3 gap-2 text-center">
+                            <div className="min-w-0">
                                 <div className="text-white text-sm font-semibold">156%</div>
                                 <div className="text-[#868f97] text-xs">User Growth</div>
                             </div>
-                            <div>
+                            <div className="min-w-0">
                                 <div className="text-white text-sm font-semibold">$89</div>
                                 <div className="text-[#868f97] text-xs">CAC</div>
                             </div>
-                            <div>
+                            <div className="min-w-0">
                                 <div className="text-white text-sm font-semibold">12mo</div>
                                 <div className="text-[#868f97] text-xs">Payback</div>
                             </div>
